@@ -1,62 +1,59 @@
-# TO-DO: complete the helpe function below to merge 2 sorted arrays
+# TO-DO: complete the helper function below to merge 2 sorted arrays
 def merge( arrA, arrB ):
     elements = len( arrA ) + len( arrB )
     merged_arr = [0] * elements
+    leftindex = 0
+    rightindex = 0
     # TO-DO
-    a = 0
-    b = 0
-
-    return merged_arr
-
-# EXAMPLE:
-def merge( arrA, arrB ):
-    # TO-DO
-    i=0
-    j=0
-    lenA = len(arrA)
-    lenB = len(arrB)
-
-    arr = []
-
-    while((i < lenA) and (j < lenB)):
-        if(arrA[i] < arrB[j]):
-            arr.append(arrA[i])
-            i = i + 1
+    while(leftindex < len(arrA) and rightindex < len(arrB)):
+        if(arrB)[rightindex] > arrA[leftindex]:
+            merged_arr.append(arrA[leftindex])
+            leftindex += 1
         else:
-            arr.append(arrB[j])
-            j = j + 1
-    
-    while(i < lenA):
-        arr.append(arrA[i])
-        i = i + 1
-    
-    while(j < lenB):
-        arr.append(arrB[j])
-        j = j + 1
-    
-    return merged_arr
-                   
-arrA = [1, 4, 7, 9]
-arrB = [10, 14, 15]
+            merged_arr.append(arrB)[rightindex]
+            rightindex += 1
 
+    return merged_arr
+print(merge)
 
 # TO-DO: implement the Merge Sort function below USING RECURSION
 def merge_sort( arr ):
     # TO-DO
-    def merge_sort( arr ):
-    if len(arr) > 1:
-        # split the array
-        mid = len(arr) // 2
-        # split again - left
-        left = arr[:mid]
-        # split again - right
-        right = arr[mid:]
-        arr = merge(left, right)
+    # (base case) If the array is empty or length 1, return
+    if len(arr)>1:
+        #spints the array into half
+        mid = len(arr)//2
+        lefthalf = arr[:mid]
+        righthalf = arr[:mid]
 
-        mergeSort(left)
-        mergeSort(right)
+        #recrusion
+        merge_sort(lefthalf)
+        merge_sort(righthalf)
 
+        i=0
+        j=0
+        k=0
+
+        while i < len(lefthalf) and j < len(righthalf):
+            if lefthalf[i] < righthalf[j]:
+                arr[k]=lefthalf[i]
+                i=i+1
+            else:
+                arr[k]=righthalf[j]
+                j=j+1
+            k=k+1
+        while i < len(lefthalf):
+            arr[k]=lefthalf[i]
+            i=i+1
+            k=k+1
+        while i < len(righthalf):
+            arr[k]=lefthalf[j]
+            j=j+1
+            k=k+1
+# Merge them back together 
+# Compare the first values of each arra, add smaller of hte 2 to result 
     return arr
+print(merge_sort)
 
 
 # STRETCH: implement an in-place merge sort algorithm
