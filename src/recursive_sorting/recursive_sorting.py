@@ -68,3 +68,25 @@ def merge_sort_in_place(arr, l, r):
 def timsort( arr ):
 
     return arr
+
+def quicksort(data):
+# Base case: if array length 0 or 1
+    if len(data) < 2:
+        # Return Array
+        return data
+
+    else:
+    #pick pivot might as well pick fist because its unsortd, none are better
+        pivot = data[0]
+        left = []
+        right = []
+
+    # Put anything smaller into left array
+    # Put anything bigger into right array
+        for value in data [1:]:
+            if value <= pivot:
+                left.append(value)
+            else:
+                right.append(value)
+    # Return quicksort(left) + pivot + quicksort(right)
+        return quicksort(left) + pivot + quicksort(right)
